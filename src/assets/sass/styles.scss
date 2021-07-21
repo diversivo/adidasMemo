@@ -1,0 +1,172 @@
+@import "variables";
+@import "reset";
+@import "tipography";
+@import "layout";
+@import "trivia";
+@import "components/buttons";
+@import "components/forms";
+
+// Global
+
+.flex-fdc-fc-fs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.padding-1{
+    padding: 1em 0;
+}
+
+.max-w-56{
+    max-width: 56px;
+}
+
+.max-w-400{
+    max-width: 400px;
+}
+
+.m-0-auto{
+    margin: 0 auto;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.height-150{
+    height: 150px;
+}
+
+.mt-2{
+    margin-top: 40px;
+}
+.pt-1{
+    padding-top: 24px;
+}
+.pb-1{
+    padding-bottom: 8px;
+}
+
+.h-150{
+    height: 150px;
+}
+
+.h-56{
+    height: 56px;
+}
+
+.generated-code{
+    font-size: 4em;
+}
+
+.streaming__countdown{
+    display: grid;
+    gap: 48px;
+    place-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    @media only screen and(max-width: $small){
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.streaming__clock{
+    position: relative;
+}
+
+.timer{
+    padding: 35px 43px;
+    font-weight: 100;
+    font-size: 36px;
+}
+
+// buttons
+
+.button--disabled{
+    background-color: var(--color--gray);
+    &:hover{
+        background-color: var(--color--gray);
+        color: var(--color--white);
+        cursor: not-allowed;
+    }
+    &:active{
+        transform: scale(1,1);
+        filter: brightness(100%);
+    }
+}
+
+.rotate{
+    position: absolute;
+    transform: rotate(270deg);
+    z-index: 10;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.white-circle{
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.response-box{
+    border-radius: 18px;
+    padding: 2em;
+    box-shadow: 0px 3px 18px 3px rgba(0,0,0,.2);
+    width: 100%;
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: show;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes show {
+    0%{ opacity: 0; }
+    100%{ opacity: 1; }
+}
+
+
+.load-animate{
+    animation-name: load-animate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes load-animate {
+    0%{ transform: rotate(0); }
+    100%{ transform: rotate(360deg); }
+}
+
+.response-box img{
+    width: 100%;
+    max-width: 80px;
+}
+
+.padding-bottom{
+    padding-top: .5em;
+    padding-bottom: .4em;
+}
+
+.rank-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }

@@ -1,0 +1,76 @@
+*{
+    scroll-behavior: smooth;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // font-family: 'Roboto', sans-serif;
+    font-family: 'adineue PRO Cond';
+    color: black;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,ol,li,p,pre,blockquote,figure,hr{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+input,textarea,select,button{
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+}
+
+button * {
+    pointer-events: none;
+    touch-action: none;
+}
+
+embed,
+iframe,
+img,
+object,
+video {
+    display: block;
+}
+
+img{
+    width: 100%;
+}
+
+table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+footer{
+    padding: 0;
+    margin: 0;
+}

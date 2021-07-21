@@ -1,0 +1,58 @@
+*{
+  --input-padding: 14px 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 360px;
+  padding-top: 1em;
+  width: 100%;
+}
+
+label{
+  margin-top: .36em;
+  font-size: 14px;
+  width: 100%;
+}
+
+input[type=text],input[type=password]{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  color: black;
+  padding: var(--input-padding);
+  margin: .4em 0;
+  width: 100%;
+  &:hover{
+      background-color: darken(white, 10%);
+  }
+  &:focus{
+      border-color: var(--clr-primary);
+  }
+  &.error{
+      border-color: var(--color--red);
+  }
+}
+
+input::placeholder{
+  color: black;
+}
+
+select{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  color: black;
+  padding: var(--input-padding);
+  margin: .4em 0;
+  width: 100%;
+}
+.form__helper{
+  color: var(--color--red);
+  font-size: 11px;
+  font-weight: 700;
+  padding: .5em 1em;
+}

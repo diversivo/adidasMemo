@@ -1,0 +1,60 @@
+
+$max-width : 620px;
+$primary-color: #005EA1;
+$gray-color: #909090;
+
+$small      :   600px;
+$medium     :   800px;
+$large      :   1200px;
+
+:root{
+
+    //colors
+    --clr-primary: #005EA1;
+    --color--gray: #e0e0e0;
+    --color--blue: #0000FF;
+    --color-green: #1ab817;
+    --clr-white: #ffffff;
+    --color--black: #1c1c1c;
+    --color--red: #F21313;
+
+    --color--active:  var(--color--blue);
+    --color--primary--active: var(--color--blue);
+
+    // font sizes
+    --h1-size: 2.25rem;
+    --h2-size: 1.75rem;
+    --h3-size: 1.25rem;
+    --h5-size: 1rem;
+    --h6-size: .65rem;
+    --pre-size: 1.15rem;
+    --body-size: 14px;
+}
+
+@media only screen and (max-width: $medium){
+    :root{
+        $size-constant : 2.25em;
+        --h1-size: calc(#{$size-constant} * 0.85);
+        --h2-size: calc(#{$size-constant} * 0.68);
+        --h3-size: calc(#{$size-constant} * 0.58);
+        --h4-size: calc(#{$size-constant} * 0.53);
+        --h5-size: calc(#{$size-constant} * 0.45);
+        --h6-size: calc(#{$size-constant} * 0.35);
+        --pre-size: calc(#{$size-constant} * 0.50);
+        --body-size: 14px;
+    }
+}
+
+@media only screen and (max-width: $small){
+    :root{
+        $size-constant : 1.6em;
+        --h1-size: calc(#{$size-constant} * 0.85);
+        --h2-size: calc(#{$size-constant} * 0.65);
+        --h3-size: calc(#{$size-constant} * 0.58);
+        --h4-size: calc(#{$size-constant} * 0.53);
+        --h5-size: calc(#{$size-constant} * 0.45);
+        --h6-size: calc(#{$size-constant} * 0.35);
+        --pre-size: calc(#{$size-constant} * 0.55);
+        --body-size: 16px;
+    }
+}

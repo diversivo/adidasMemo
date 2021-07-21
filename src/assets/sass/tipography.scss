@@ -1,0 +1,73 @@
+// Tipography
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap');
+@font-face {
+    font-family: 'adineue PRO Cond';
+    src: url('../font/adineuePROCond-Bold.eot');
+    src: url('../font/adineuePROCond-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../font/adineuePROCond-Bold.woff2') format('woff2'),
+        url('../font/adineuePROCond-Bold.woff') format('woff'),
+        url('../font/adineuePROCond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+h1,h2,h3,h4,h5,h6,pre,p{
+    text-rendering: optimizeLegibility;
+    color: inherit;
+    margin: 0 auto;
+    font-family: 'adineue PRO Cond';
+}
+
+h1 {
+    font-size: var(--h1-size);
+    line-height: 1.45;
+    font-weight: 400;
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: var(--h2-size);
+    line-height: 1.55;
+  }
+
+h3 {
+    font-weight: bold;
+    font-size: var(--h3-size);
+    line-height: 1.1;
+}
+h4 {
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.1;
+}
+h5 {
+    font-weight: lighter;
+    font-size: var(--h5-size);
+    line-height: 1.85;
+}
+h6 {
+    font-weight: bold;
+    font-size: var(--h6-size);
+    color: $gray-color;
+    line-height: 1.1;
+}
+
+pre {
+    font-family: worker, serif;
+    font-size: var(--pre-size);
+    line-height: 1.42;
+    text-transform: uppercase;
+    word-wrap: normal;
+    padding: .15rem 0 .65rem;
+    background: none;
+    @media only screen and (max-width: $small){
+        padding-bottom: .15rem 0 .15rem 0;
+    }
+}
+
+p{
+    font-size: var(--body-size);
+    font-weight: lighter;
+}

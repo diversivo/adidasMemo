@@ -1,0 +1,15 @@
+*{
+  --border-radius: 2px;
+}
+
+.btn{
+  padding: 8px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 19px;
+}
+
+.btn--primary{
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+}
