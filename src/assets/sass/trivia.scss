@@ -1,12 +1,59 @@
+$size       : 80px;
+$depth      : $size/24;
+$radius     : 1px;
+$transition : 250ms linear;
+$easing     : cubic-bezier(0.000, 0.000, 0.000, 1.000);
+$dark       : #008cff;
+$medium     : rgb(100,100,100);
+$light      : rgb(170,170,170); 
+$lightest   : rgb(220,220,220);
+
+$colorHue:      204;
+$colorBase:     hsl($colorHue,70%,45%);
+$colorLight:    hsl($colorHue,50%,60%);
+$colorLighter:  hsl($colorHue,50%,75%);
+$colorLightest: hsl($colorHue,50%,95%);
+$colorDark:     hsl($colorHue,15%,45%);
+$colorDarker:   hsl($colorHue,15%,30%);
+$colorDarkest:  hsl($colorHue,05%,25%);
+
 .alternative {
-  width: 340px;
-  height: 40px;
-  margin: 10px;
-  margin: 10px auto 10px auto;
+  width: 80px;
+  height: 80px;
   line-height: 40px;
-  box-shadow: 0px 3px 6px #00000029;
+  box-shadow: inset 0px 0px 20px 0px #000000;
+  -webkit-box-shadow: inset 0px 0px 20px 0px #000000;
+  background-color: white;
+  // border: 1px solid red;
 }
 
+.option-square {
+  width: 80px;
+  height: 80px;
+}
+
+.memo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  margin: 10px auto;
+  padding: 10px;
+  width:310px;
+  background-color: #dee8fb;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  width:260px;
+}
 
 .rank-item {
   width: 95%;
@@ -38,3 +85,127 @@
   width: 95%;
   margin: 10px auto 10px auto;
 }
+
+
+// .door
+// {
+  //   background-color: #088bff;
+  //   position:relative;
+  //   top:-80px;
+  //   left: 0px;
+  //   width:80px;
+  //   height:80px;
+  //   transform-origin: left;
+  //   // border: solid 1px black;
+  //   box-shadow: 0px 0px 2px 0px #000000;
+  //   /*Speed of the Door animation*/
+  //   transition: all 0.5s ease-in-out;
+  // }
+  
+  .doorOpen
+  {
+    /*prespectiv creates the door open effect*/
+    transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+    background-color: #f7f7f7;
+    box-shadow: inset 0px 0px 20px 0px #000000;
+    -webkit-box-shadow: inset 0px 0px 20px 0px #000000;
+  }
+  
+  
+  /* -------------------------------- 
+  // WRAPPER
+  -------------------------------- */
+  .wrapper {
+    box-shadow: 0px 0px 2px 0px #000000;
+    width: $size;
+    height: $size;
+    margin: 0 auto;
+    position: relative;
+    transform: perspective($size*5);
+    transform-style: preserve-3d;
+  }
+  
+  /* -------------------------------- 
+  // BG
+  -------------------------------- */
+  .bg {
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+    box-shadow: 0 0 0 rgba(255,255,255,0.8);
+    transition: 150ms linear;
+    transform: translate3d(0,0,0);
+  }
+  .open .bg {
+    box-shadow: 0 0 80px rgba(255,255,255,0.8);
+  }
+  
+  /* -------------------------------- 
+  // DOOR
+  -------------------------------- */
+  .door {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: $radius;
+    background-color: $dark;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    transition: $transition;
+    transform-style: preserve-3d;
+    transform-origin: right center;
+  }
+  
+  .back,
+  .door:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: $dark;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: $transition;
+    transform: translateX(-$depth);
+  }
+  
+  .edge,
+  .door:after {
+    content: '';
+    height: 100%;
+    width: $depth;
+    background-color: $dark;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transition: $transition;
+    transform: rotateY(90deg) translateZ($depth);
+    transform-origin: right center;
+  }
+  
+  .open .door,
+  .open .door:before,
+  .open .door:after {
+    transition-timing-function: $easing;
+  }
+  .open .door {
+    transform: rotateY(90deg);
+    background-color: $dark;
+  }
+  .back,
+  .open .door:before {
+    background-color: $lightest;
+  }
+  .edge,
+  .open .door:after {
+    background-color: $light;
+  }

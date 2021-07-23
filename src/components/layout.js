@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './commons/header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backgroundColor }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
         menuLinks={data.site.siteMetadata.menuLinks}
         siteTitle={data.site.siteMetadata.title}
       />
-      <div>
+      <div style={{backgroundColor}}>
         {children}
       </div>
       <footer>

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { getRandom, shuffleArray } from '../components/utils';
 
 import { navigate } from 'gatsby';
 
@@ -23,7 +24,8 @@ const Trivia = ({ location }) => {
   const [altClicked, setAltClicked] = useState(null);
   const [ansClicked, setAnsClicked] = useState(null);
   const [results, setResults] = useState([]);
-  const [currentQueryIndex, setCurrentQueryIndex] = useState(Math.floor(Math.random() * 4) * 5);
+  const [currentQueryIndex, setCurrentQueryIndex] = useState(0);
+  const [currentQueryObject, setCurrentQueryObject] = useState({alternatives:[]});
 
   // Info
   const [firstname, setFirstname] = useState('');
@@ -33,19 +35,29 @@ const Trivia = ({ location }) => {
   const [code, setCode] = useState('');
   const [RUT, setRUT] = useState('');
 
-  useEffect(() => {
-    if (location.state && location.state.time) {
-      if ((Date.now() - location.state.time) > 1000 * 10) {
-        navigate('/');
-      } else {
-        setFirstname(location.state.firstname);
-        setLastname(location.state.lastname);
-        setEmail(location.state.email);
-        setPhone(location.state.phone);
-        setCode(location.state.code);
-        setRUT(location.state.rut);
-      }
-    }
+  // useEffect(() => {
+  //   if (location.state && location.state.time) {
+  //     if ((Date.now() - location.state.time) > 1000 * 10) {
+  //       navigate('/');
+  //     } else {
+  //       setFirstname(location.state.firstname);
+  //       setLastname(location.state.lastname);
+  //       setEmail(location.state.email);
+  //       setPhone(location.state.phone);
+  //       setCode(location.state.code);
+  //       setRUT(location.state.rut);
+  //     }
+  //   }
+  //   return () => { }
+  // }, [])
+
+   useEffect(() => {
+    const selectedTokens = getRandom(questions[currentQueryIndex].alternatives,6);
+    selectedTokens.push(...selectedTokens);
+    console.log(selectedTokens);
+    const shuffledArray = shuffleArray(selectedTokens);
+    setCurrentQueryObject({alternatives: shuffledArray});
+    
     return () => { }
   }, [])
 
@@ -83,7 +95,6 @@ const Trivia = ({ location }) => {
   const mins = Math.trunc(questionTime / (1000 * 60));
   const secondModule = Math.floor((questionTime - (mins * 1000 * 60)) / 1000);
   const seconds = secondModule < 10 ? `0${secondModule}` : `${secondModule}`;
-  const currentQueryObject = questions[currentQueryIndex];
 
   const persistScore = (score, correctAnswers) => {
     setLoading(true);
@@ -125,6 +136,7 @@ const Trivia = ({ location }) => {
   };
 
   const alternativeClicked = (index) => {
+    console.log("Indiece de alternativa", index);
     setAltClicked(index);
   }
 
@@ -152,12 +164,12 @@ const Trivia = ({ location }) => {
     }, 2000);
   }
 
-  if (!location.state || !location.state.code || !location.state.time) {
-    if (typeof window !== `undefined`) {
-      navigate('/');
-    }
-    return null;
-  }
+  // if (!location.state || !location.state.code || !location.state.time) {
+  //   if (typeof window !== `undefined`) {
+  //     navigate('/');
+  //   }
+  //   return null;
+  // }
 
 
   return (<Layout>
@@ -165,54 +177,72 @@ const Trivia = ({ location }) => {
     <div style={{
       width: '100%',
       textAlign: 'center',
-      padding: '20px',
+      padding: '10px',
     }}>
-      <Logo className="max-w-56 h-56"/>
+      <Logo className="max-w-56 h-56" />
     </div>
-    {
-      startCount < 1000 ?
-        <div
-          className="question-time"
-          style={{
-            width: '100%',
-            textAlign: 'center',
-            color: '#005EA1',
-            fontSize: '36px'
-          }}
-        >
-          <div>{`0${mins}:${seconds}`}</div>
-        </div> : null
-    }
-    {
-      startCount < 1000 ?
-        <div
-          className="question-object"
-          style={{
-            textAlign: 'center',
-            width: '100%'
-          }}
-        >
-          <div className="question" style={{ color: '#D7685B', fontSize: '32px', padding: '26px' }}>{currentQueryObject.question}</div>
-          {
-            currentQueryObject.alternatives.map((value, index) => {
-              return <div
-                className="alternative alt1"
-                key={`alt-${index}`}
-                onClick={() => { alternativeClicked(index); }}
+    <div style={{ backgroundColor: '#a7a7a7', height: '88vh' }}>
+      <div style={{ color: 'white', textAlign: 'center', backgroundColor: 'black', fontWeight: 'ligth' }}>
+        <span>Descubre los pares y podrás<br />ganar increibles premios</span>
+      </div>
+
+      {
+        startCount < 1000 ?
+          <div
+            className="question-object"
+            style={{
+              textAlign: 'center',
+              width: '100%',
+              backgroundColor: '#a7a7a7'
+            }}
+          >
+
+            <div className="time-grid">
+              <div style={{ gridArea: '1 / 1 / 2 / 2' }}>
+                <div className="question" style={{ color: 'black', fontSize: '12px', padding: '5px', textAlign: 'left' }}>Toca los casilleros y</div>
+                <div className="question" style={{ color: 'black', fontSize: '20px', padding: '5px', textAlign: 'left' }}>Encuentra los pares</div>
+              </div>
+              <div
+                className="question-time"
                 style={{
-                  ...altClicked === index ?
-                    { color: 'white', backgroundColor: '#005EA1' } :
-                    {},
-                  ...ansClicked !== null && ansClicked == index ? {
-                    backgroundColor: value.isTrue ? '#26A454' : '#D7685B'
-                  } : {}
+                  width: '100%',
+                  textAlign: 'center',
+                  color: '#005EA1',
+                  fontSize: '36px',
+                  backgroundColor: '#a7a7a7'
                 }}
               >
-                {value.text}
-              </div>;
-            })
-          }
-          <div
+                <div>{`0${mins}:${seconds}`}</div>
+              </div>
+            </div>
+            <div className="memo-grid">
+              {
+                currentQueryObject.alternatives.map((value, index) => {
+                  return <div
+                    className={`option-square wrapper ${altClicked === index ? ' open' : ''}`}
+                    key={`alt-${index}`}
+                    onClick={() => { alternativeClicked(index); }}
+                  >
+                    <div
+                      className="alternative alt1 bg"
+                      style={{
+                        ...altClicked === index ?
+                          { color: 'white', backgroundColor: '#272626' } :
+                          {},
+                        ...ansClicked !== null && ansClicked == index ? {
+                          backgroundColor: value.isTrue ? '#26A454' : '#D7685B'
+                        } : {}
+                      }}
+                    >
+                      {value.text}
+                    </div>
+                    <div className="door"></div>
+                  </div>
+                    ;
+                })
+              }
+            </div>
+            {/* <div
             style={{
               height: '40px',
               width: '130px',
@@ -229,25 +259,27 @@ const Trivia = ({ location }) => {
               answerClicked();
             }}
           >
-            RESPONDER
+          RESPONDER
+          </div> */}
           </div>
-        </div>
-        : null
-    }
-    {
-      startCount > 1000 ?
-        <div className="start-timer">
-          <div style={{
-            color: '#005EA1',
-            opacity: startCount % 1000 / 1000,
-            fontSize: startCount % 1000 / 2,
-            textAlign: 'center',
-            lineHeight: '80vh',
-          }}>
-            {Math.trunc(startCount / 1000)}
-          </div>
-        </div> : null
-    }
+          : null
+      }
+      {
+        startCount > 1000 ?
+          <div className="start-timer">
+            <div style={{
+              color: '#005EA1',
+              opacity: startCount % 1000 / 1000,
+              fontSize: startCount % 1000 / 2,
+              textAlign: 'center',
+              lineHeight: '80vh',
+            }}>
+              {Math.trunc(startCount / 1000)}
+            </div>
+          </div> : null
+      }
+
+      {/* // Bottom bar
     <div
       className="bottom-bar"
       style={{
@@ -267,7 +299,9 @@ const Trivia = ({ location }) => {
       }
       <div style={{ ...bottomStepStyle }}></div>
     </div>
-    <div style={{ opacity: 0, top: 0, left: 0, position: 'fixed', height: '100%', width: '100%', backgroundColor: 'black', display: ansClicked !== null ? 'block' : 'none' }} />
+      <div style={{ opacity: 0, top: 0, left: 0, position: 'fixed', height: '100%', width: '100%', backgroundColor: 'black', display: ansClicked !== null ? 'block' : 'none' }} />
+     */}
+    </div>
   </Layout >);
 }
 

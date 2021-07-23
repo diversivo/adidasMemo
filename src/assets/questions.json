@@ -1,420 +1,52 @@
 [
   {
-    "question": "¿Quién fue la primera mujer árbitro del fútbol masculino chileno?",
     "alternatives": [
       {
-        "text":"María Belén Carvajal",
+        "text":"Futbol",
         "isTrue": true
       },
       {
-        "text":"Christiane Endler",
+        "text":"Tenis",
         "isTrue": false
       },
       {
-        "text":"Isabel Allende",
+        "text":"Basket",
         "isTrue": false
       },
       {
-        "text":"Soledad Onetto",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la mujer que consiguió puntaje perfecto en gimnasia artística?",
-    "alternatives": [
-      {
-        "text":"Angelina Jolie",
+        "text":"Adidas Flor",
         "isTrue": false
       },
       {
-        "text":"Gabriela Sabatini",
+        "text":"Adidas Triangulo",
         "isTrue": false
       },
       {
-        "text":"Nadia Comaneci",
+        "text":"Mochila",
+        "isTrue": false
+      },
+      {
+        "text":"Pantalon",
         "isTrue": true
       },
       {
-        "text":"Simone Biles",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en el mundo en ganar un título olímpico en 1900?",
-    "alternatives": [
-      {
-        "text":"Marlene Ahrens",
+        "text":"Zapatilla",
         "isTrue": false
       },
       {
-        "text":"Charlotte Cooper",
-        "isTrue": true
-      },
-      {
-        "text":"Sonia Gandhi",
+        "text":"Gorro",
         "isTrue": false
       },
       {
-        "text":"Ana Bolena",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer chilena en ganar una medalla olímpica?",
-    "alternatives": [
-      {
-        "text":"Marlene Ahrens",
-        "isTrue": true
-      },
-      {
-        "text":"Tonka Tomicic",
+        "text":"Polera",
         "isTrue": false
       },
       {
-        "text":"Erika Olivera",
+        "text":"Adidas kids",
         "isTrue": false
       },
       {
-        "text":"Isidora Goyenechea",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién es la mujer chilena maratonista que más Juegos Olímpicos ha disputado en el mundo?",
-    "alternatives": [
-      {
-        "text":"Bárbara Riveros",
-        "isTrue": false
-      },
-      {
-        "text":"Erika Olivera",
-        "isTrue": true
-      },
-      {
-        "text":"Crespita Rodríguez",
-        "isTrue": false
-      },
-      {
-        "text":"Jacinda Ardern",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en correr una maratón olímpica en el mundo?",
-    "alternatives": [
-      {
-        "text":"Rosa Mota",
-        "isTrue": false
-      },
-      {
-        "text":"Enriqueta Basilio",
-        "isTrue": false
-      },
-      {
-        "text":"Katherine Switzer",
-        "isTrue": true
-      },
-      {
-        "text":"Nadia Comaneci",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la mujer que derrotó al maestro del ajedrez Garry Kasparov?",
-    "alternatives": [
-      {
-        "text":"Judit Polgár",
-        "isTrue": true
-      },
-      {
-        "text":"Aretha Franklin",
-        "isTrue": false
-      },
-      {
-        "text":"Serena Williams",
-        "isTrue": false
-      },
-      {
-        "text":"Xie Jun",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en llevar una antorcha olímpica y encender el pebetero?",
-    "alternatives": [
-      {
-        "text":"Enriqueta Basilio",
-        "isTrue": true
-      },
-      {
-        "text":"Crespita Rodríguez",
-        "isTrue": false
-      },
-      {
-        "text":"María Fernanda Valdés",
-        "isTrue": false
-      },
-      {
-        "text":"Jacinda Ardern",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién es la única gimnasta rítmica que ha estado en 4 finales olímpicas?",
-    "alternatives": [
-      {
-        "text":"Almudena Cid",
-        "isTrue": true
-      },
-      {
-        "text":"Marlene Ahrens",
-        "isTrue": false
-      },
-      {
-        "text":"Nadia Comaneci",
-        "isTrue": false
-      },
-      {
-        "text":"Javiera Carrera",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en jugar en un equipo oficial de básket (NBA) masculino?",
-    "alternatives": [
-      {
-        "text":"Sonia Gandhi",
-        "isTrue": false
-      },
-      {
-        "text":"Lucy Harris",
-        "isTrue": true
-      },
-      {
-        "text":"María Sharápova",
-        "isTrue": false
-      },
-      {
-        "text":"Venus Williams",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer que llegó al espacio exterior?",
-    "alternatives": [
-      {
-        "text":"Anne Hathaway",
-        "isTrue": false
-      },
-      {
-        "text":"Teresa Carreño",
-        "isTrue": false
-      },
-      {
-        "text":"Valentina Tereshkova",
-        "isTrue": true
-      },
-      {
-        "text":"María Sharápova",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en el mundo en ser elegida presidenta?",
-    "alternatives": [
-      {
-        "text":"Isabelita Perón",
-        "isTrue": true
-      },
-      {
-        "text":"Imelda Marcos",
-        "isTrue": false
-      },
-      {
-        "text":"Michelle Bachelet",
-        "isTrue": false
-      },
-      {
-        "text":"Margaret Thatcher",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en votar en Latinoamérica?",
-    "alternatives": [
-      {
-        "text":"Javiera Carrera",
-        "isTrue": false
-      },
-      {
-        "text":"Matilde Hidalgo",
-        "isTrue": true
-      },
-      {
-        "text":"Frida Kahlo",
-        "isTrue": false
-      },
-      {
-        "text":"Isidora Goyenechea",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién es la máxima goleadora en la historia de los mundiales femeninos?",
-    "alternatives": [
-      {
-        "text":"Serena Williams",
-        "isTrue": false
-      },
-      {
-        "text":"Erika Olviera",
-        "isTrue": false
-      },
-      {
-        "text":"Marta Vieira",
-        "isTrue": true
-      },
-      {
-        "text":"Macarena Sánchez",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Qué chilena fue elegida como la mejor arquera femenina del 2020?",
-    "alternatives": [
-      {
-        "text":"Crespita Rodríguez",
-        "isTrue": false
-      },
-      {
-        "text":"Christiane Endler",
-        "isTrue": true
-      },
-      {
-        "text":"Romina Parraguirre",
-        "isTrue": false
-      },
-      {
-        "text":"Antonia Canales",
-        "isTrue": false
-      }
-    ] 
-  }
-  ,  {
-    "question": "¿Quién fue la primera mujer en entrar al Salón de la Fama del Rock and Roll?",
-    "alternatives": [
-      {
-        "text":"Aretha Franklin",
-        "isTrue": true
-      },
-      {
-        "text":"Madonna",
-        "isTrue": false
-      },
-      {
-        "text":"Tina Turner",
-        "isTrue": false
-      },
-      {
-        "text":"Donna Summer",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue una de las precursoras del derecho al voto femenino en Chile?",
-    "alternatives": [
-      {
-        "text":"Javiera Carrera",
-        "isTrue": false
-      },
-      {
-        "text":"Elena Caffarena",
-        "isTrue": true
-      },
-      {
-        "text":"Paula Jaraquemada",
-        "isTrue": false
-      },
-      {
-        "text":"Gabriela Mistral",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en recibir un premio Nobel de economía?",
-    "alternatives": [
-      {
-        "text":"Margaret Thatcher",
-        "isTrue": false
-      },
-      {
-        "text":"Michelle Obama",
-        "isTrue": false
-      },
-      {
-        "text":"Elinor Ostrom",
-        "isTrue": true
-      },
-      {
-        "text":"Hillary Clinton",
-        "isTrue": false
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en dar la vuelta al mundo?",
-    "alternatives": [
-      {
-        "text":"Marie Curie",
-        "isTrue": false
-      },
-      {
-        "text":"Madre Teresa de Calcuta",
-        "isTrue": false
-      },
-      {
-        "text":"Marlene Ahrens",
-        "isTrue": false
-      },
-      {
-        "text":"Geraldine Mock",
-        "isTrue": true
-      }
-    ] 
-  },
-  {
-    "question": "¿Quién fue la primera mujer en ganar un premio Oscar?",
-    "alternatives": [
-      {
-        "text":"Janet Gaynor",
-        "isTrue": true
-      },
-      {
-        "text":"Meryl Streep",
-        "isTrue": false
-      },
-      {
-        "text":"Julie Andrews",
-        "isTrue": false
-      },
-      {
-        "text":"Sofia Loren",
+        "text":"Calcetin",
         "isTrue": false
       }
     ] 

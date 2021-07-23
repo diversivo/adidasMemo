@@ -76,8 +76,89 @@ async function sha256(message) {
   return hashHex;
 }
 
+function rutEsValido(rut) {
+  if (!rut || rut.trim().length < 3) return false;
+  const rutLimpio = rut.replace(/[^0-9kK-]/g, "");
+
+  if (rutLimpio.length < 3) return false;
+
+  const split = rutLimpio.split("-");
+  if (split.length !== 2) return false;
+
+  const num = parseInt(split[0], 10);
+  const dgv = split[1];
+
+  const dvCalc = calculateDV(num);
+  return dvCalc === dgv;
+}
+
+function calculateDV(rut) {
+  const cuerpo = `${rut}`;
+  // Calcular Dígito Verificador
+  let suma = 0;
+  let multiplo = 2;
+
+  // Para cada dígito del Cuerpo
+  for (let i = 1; i <= cuerpo.length; i++) {
+    // Obtener su Producto con el Múltiplo Correspondiente
+    const index = multiplo * cuerpo.charAt(cuerpo.length - i);
+
+    // Sumar al Contador General
+    suma += index;
+
+    // Consolidar Múltiplo dentro del rango [2,7]
+    if (multiplo < 7) {
+      multiplo += 1;
+    } else {
+      multiplo = 2;
+    }
+  }
+
+  // Calcular Dígito Verificador en base al Módulo 11
+  const dvEsperado = 11 - (suma % 11);
+  if (dvEsperado === 10) return "k";
+  if (dvEsperado === 11) return "0";
+  return `${dvEsperado}`;
+}
+
+function getRandom(arr, n) {
+  var result = new Array(n),
+      len = arr.length,
+      taken = new Array(len);
+  if (n > len)
+      throw new RangeError("getRandom: more elements taken than available");
+  while (n--) {
+      var x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      taken[x] = --len in taken ? taken[len] : len;
+  }
+  return result;
+}
+
+function shuffleArray(array) {
+  var currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 export {
   clrIlTxt,
   copyTextToClipboard,
-  sha256
+  sha256,
+  rutEsValido,
+  calculateDV,
+  getRandom,
+  shuffleArray
 };
