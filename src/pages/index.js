@@ -9,6 +9,8 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import Logo from '../assets/svg/AdidasLogo.svg';
+import CasilleroAdidas from '../assets/svg/inline/casilleros-adidas.svg';
+
 
 const IndexPage = ({ location }) => {
 
@@ -141,7 +143,7 @@ const IndexPage = ({ location }) => {
 
   const inputStyle = {
     textTransform: 'uppercase',
-    textAlign: 'center'
+    textAlign: 'left'
   };
 
   const stores = [
@@ -202,16 +204,14 @@ const IndexPage = ({ location }) => {
 
   return <Layout>
     <SEO title="Inicio" />
-    <div className="container"
-      style={{ textAlign: 'center', alignContent: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '90vh' }}
-    >
+    <div className="container index__container">
+      <h3 style={{ textTransform: 'uppercase', color: 'white', backgroundColor: 'black', width: '100%', height: '30px', lineHeight: '30px' }}>Participa por premios jugando en los</h3>
+      <CasilleroAdidas style={{ width: '70%', margin:'0 auto', paddingTop: '8px'}}/>
       {true ?
         // JDP Put your code HERE
         <form>
-          <h3 style={{ textTransform: 'uppercase', color: 'white', backgroundColor: 'black', width: '100%', height: '30px', lineHeight: '30px' }}>Participa por premios jugando en los</h3>
-          <h2>CASILLEROS</h2>
-          <h1>ADIDAS</h1>
-          <label>Ingresa los siguientes datos para jugar</label>
+          
+          <label style={{color:'white', fontSize:'1.4em'}}>Ingresa los siguientes datos para jugar</label>
           <input placeholder="NOMBRE Y APELLIDO" type="text" maxLength="50" style={{ ...inputStyle, borderColor: errors && errors.fullName ? 'red' : 'black' }} onChange={(e) => { setFullName(e.target.value) }} />
           {errors && errors.fullName ? <span className="error-span">{errors.fullName}</span> : null}
           <input placeholder="CORREO" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.email ? 'red' : 'black' }} onChange={(e) => { setEmail(e.target.value) }} />
@@ -234,7 +234,7 @@ const IndexPage = ({ location }) => {
             {stores.map((name) => <option value={name} key={name}>{`${name}`}</option>)}
           </select>
           {errors && errors.store ? <span className="error-span">{errors.store}</span> : null}
-          <input className="btn btn--primary" type="button" value="INGRESAR" onClick={() => !loading ? submitCodeToAPI(code) : null} />
+          <input className="btn btn--primary" type="button" value="JUGAR" onClick={() => !loading ? submitCodeToAPI(code) : null} />
         </form>
         : <Logo />}
     </div>

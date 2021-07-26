@@ -1,9 +1,14 @@
 // LAYOUT
+
+body{
+    background: black url('../images/bg-main.jpg') center/cover no-repeat;
+}
+
 .container{
     position: relative;
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 70px);
     max-width: $max-width;
 }
 

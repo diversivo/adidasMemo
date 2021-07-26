@@ -1,5 +1,5 @@
 *{
-  --input-padding: 14px 12px;
+  --input-padding: 12px 8px;
 }
 
 form {
@@ -7,9 +7,10 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 360px;
-  padding-top: 1em;
-  width: 100%;
+  max-width: 380px;
+  width: 85%;
+  margin: 0 auto;
+  padding-bottom: 2em;
 }
 
 label{

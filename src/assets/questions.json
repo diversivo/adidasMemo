@@ -3,6 +3,7 @@
     "alternatives": [
       {
         "text":"Futbol",
+        "imgUrl": "../../assets/svg/futbol.svg",
         "isTrue": true
       },
       {

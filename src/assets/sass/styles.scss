@@ -5,8 +5,14 @@
 @import "trivia";
 @import "components/buttons";
 @import "components/forms";
+@import "components/header";
 
 // Global
+
+.index__container{
+    background: blue url('../images/bg-form.jpg') center/cover no-repeat;
+    text-align: center;
+}
 
 .flex-fdc-fc-fs{
     display: flex;
