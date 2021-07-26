@@ -9,7 +9,6 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import Logo from '../assets/svg/AdidasLogo.svg';
-import MainBanner from '../assets/images/img-codigo@x2.jpg';
 
 const IndexPage = ({ location }) => {
 
@@ -29,7 +28,7 @@ const IndexPage = ({ location }) => {
   const [invoiceAmount, setInvoiceAmount] = useState('');
   const [store, setStore] = useState('');
 
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState({});
 
 
   const formValidation = () => {
@@ -38,14 +37,14 @@ const IndexPage = ({ location }) => {
       newErrors.fullName = 'Campo requerido.';
     }
     const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regEmail.test.email) {
+    if (!regEmail.test(email)) {
       newErrors.email = 'Ingrese un correo válido.';
     }
     if (email === "") {
       newErrors.email = 'Campo requerido.';
     }
     const regPhone = /^(\+56)*(\d{9})$/;
-    if (!regPhone.test.phone) {
+    if (!regPhone.test(phone)) {
       newErrors.phone = 'Ingrese un teléfono válido';
     }
     if (phone === "") {
@@ -58,11 +57,11 @@ const IndexPage = ({ location }) => {
       newErrors.rut = 'Campo requerido.';
     }
     const regNumber = /^(\d)+$/;
-    if (!regNumber.test.invoiceNumber) {
+    if (!regNumber.test(invoiceNumber)) {
       newErrors.invoiceNumber = 'Campo requerido.';
     }
 
-    if (!regNumber.test.invoiceAmount) {
+    if (!regNumber.test(invoiceAmount)) {
       newErrors.invoiceAmount = 'Campo requerido.';
     }
 
@@ -99,11 +98,11 @@ const IndexPage = ({ location }) => {
 
   const submitCodeToAPI = (code) => {
     formValidation();
-    if(Object.keys(errors).length === 0 ){
+    if (Object.keys(errors).length === 0) {
       setLoading(true);
       const url = 'https://eepz8tfl3a.execute-api.us-east-1.amazonaws.com/adidas-check-code';
-      const data = { code };
-  
+      const data = { code: invoiceNumber };
+
       fetch(url, {
         method: 'POST',
         headers: {
@@ -117,14 +116,20 @@ const IndexPage = ({ location }) => {
           console.log('Success:', result);
           console.log(`/info?code=${code}&time=${Date.now()}`);
           if (typeof window !== `undefined` && result.status !== 500) {
-            navigate('/info', {
+            navigate('/trivia', {
               state: {
-                code,
-                time: Date.now()
+                time: Date.now(),
+                invoiceNumber,
+                invoiceAmount,
+                fullName,
+                email,
+                phone,
+                store,
+                rut,
               }
             })
           } else {
-            setCodeError('El código ingresado no es válido, si cree que ocurrio un error contacte nuevamente con un ejectuvo.')
+            setCodeError('El número de boleta ingresado presenta un error o ya fue utilizado.')
           }
         })
         .catch((error) => {
@@ -139,6 +144,15 @@ const IndexPage = ({ location }) => {
     textAlign: 'center'
   };
 
+  const stores = [
+    "Tienda 1",
+    "Tienda 2",
+    "Tienda 3",
+    "Tienda 4",
+    "Tienda 5",
+    "Tienda 6",
+  ];
+
   return <Layout>
     <SEO title="Inicio" />
     <div className="container"
@@ -147,23 +161,31 @@ const IndexPage = ({ location }) => {
       {true ?
         // JDP Put your code HERE
         <form>
-          <h3 style={{textTransform: 'uppercase', color:'white', backgroundColor:'black', width:'100%', height:'30px', lineHeight:'30px'}}>Participa por premios jugando en los</h3>
+          <h3 style={{ textTransform: 'uppercase', color: 'white', backgroundColor: 'black', width: '100%', height: '30px', lineHeight: '30px' }}>Participa por premios jugando en los</h3>
           <h2>CASILLEROS</h2>
           <h1>ADIDAS</h1>
           <label>Ingresa los siguientes datos para jugar</label>
-          <input placeholder="NOMBRE Y APELLIDO" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.fullName ? 'red': 'black' }} onChange={(e) => { setFullName(e.target.value) }} />
+          <input placeholder="NOMBRE Y APELLIDO" type="text" maxLength="50" style={{ ...inputStyle, borderColor: errors && errors.fullName ? 'red' : 'black' }} onChange={(e) => { setFullName(e.target.value) }} />
           {errors && errors.fullName ? <span className="error-span">{errors.fullName}</span> : null}
-          <input placeholder="CORREO" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.email ? 'red': 'black' }} onChange={(e) => { setEmail(e.target.value) }} />
+          <input placeholder="CORREO" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.email ? 'red' : 'black' }} onChange={(e) => { setEmail(e.target.value) }} />
           {errors && errors.email ? <span className="error-span">{errors.email}</span> : null}
-          <input placeholder="TELEFONO" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.phone ? 'red': 'black' }} onChange={(e) => { setPhone(e.target.value) }} />
+          <input placeholder="TELEFONO" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.phone ? 'red' : 'black' }} onChange={(e) => { setPhone(e.target.value) }} />
           {errors && errors.phone ? <span className="error-span">{errors.phone}</span> : null}
-          <input placeholder="RUT" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.rut ? 'red': 'black' }} onChange={(e) => { setRut(e.target.value) }} />
+          <input placeholder="RUT" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.rut ? 'red' : 'black' }} onChange={(e) => { setRut(e.target.value) }} />
           {errors && errors.rut ? <span className="error-span">{errors.rut}</span> : null}
-          <input placeholder="NÚMERO DE BOLETA DE COMPRA" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.invoiceNumber ? 'red': 'black' }} onChange={(e) => { setInvoiceNumber(e.target.value) }} />
+          <input placeholder="NÚMERO DE BOLETA DE COMPRA" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.invoiceNumber ? 'red' : 'black' }} onChange={(e) => { setInvoiceNumber(e.target.value) }} />
           {errors && errors.invoiceNumber ? <span className="error-span">{errors.invoiceNumber}</span> : null}
-          <input placeholder="MONTO DE LA BOLETA" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.invoiceAmount ? 'red': 'black' }} onChange={(e) => { setInvoiceAmount(e.target.value) }} />
+          {codeError ? <span className="error-span">{codeError}</span> : null}
+          <input placeholder="MONTO DE LA BOLETA" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.invoiceAmount ? 'red' : 'black' }} onChange={(e) => { setInvoiceAmount(e.target.value) }} />
           {errors && errors.invoiceAmount ? <span className="error-span">{errors.invoiceAmount}</span> : null}
-          <input placeholder="NOMBRE DE LA TIENDA" type="text" maxLength="6" style={{...inputStyle, borderColor: errors && errors.store ? 'red': 'black' }} onChange={(e) => { setStore(e.target.value) }} />
+          <select
+            placeholder="NOMBRE DE LA TIENDA" type="text" maxLength="6"
+            style={{ ...inputStyle, borderColor: errors && errors.store ? 'red' : 'black' }}
+            onChange={(e) => { setStore(e.target.value) }}
+          >
+            <option disabled selected>NOMBRE DE LA TIENDA</option>
+            {stores.map((name) => <option value={name} key={name}>{`${name}`}</option>)}
+          </select>
           {errors && errors.store ? <span className="error-span">{errors.store}</span> : null}
           <input className="btn btn--primary" type="button" value="INGRESAR" onClick={() => !loading ? submitCodeToAPI(code) : null} />
         </form>

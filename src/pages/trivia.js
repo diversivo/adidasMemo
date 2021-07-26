@@ -21,35 +21,40 @@ const Trivia = ({ location }) => {
   const [startCount, setStartCount] = useState(6000);
   const [loading, setLoading] = useState(false);
   const [questionTime, setQuestionTime] = useState(questionStartTime);
-  const [altClicked, setAltClicked] = useState(null);
-  const [ansClicked, setAnsClicked] = useState(null);
+  const [altClicked, setAltClicked] = useState([]); 
   const [results, setResults] = useState([]);
   const [currentQueryIndex, setCurrentQueryIndex] = useState(0);
   const [currentQueryObject, setCurrentQueryObject] = useState({alternatives:[]});
 
   // Info
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [invoiceNumber, setInvoiceNumber] = useState('');
+  const [invoiceAmount, setInvoiceAmount] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [store, setStore] = useState('');
   const [code, setCode] = useState('');
   const [RUT, setRUT] = useState('');
 
-  // useEffect(() => {
-  //   if (location.state && location.state.time) {
-  //     if ((Date.now() - location.state.time) > 1000 * 10) {
-  //       navigate('/');
-  //     } else {
-  //       setFirstname(location.state.firstname);
-  //       setLastname(location.state.lastname);
-  //       setEmail(location.state.email);
-  //       setPhone(location.state.phone);
-  //       setCode(location.state.code);
-  //       setRUT(location.state.rut);
-  //     }
-  //   }
-  //   return () => { }
-  // }, [])
+  useEffect(() => {
+    if(true){
+      if (location.state && location.state.time) {
+        if ((Date.now() - location.state.time) > 1000 * 10) {
+          navigate('/');
+        } else {
+          setInvoiceAmount(location.state.invoiceAmount);
+          setInvoiceNumber(location.state.invoiceNumber);
+          setFullName(location.state.fullName);
+          setStore(location.state.store);
+          setEmail(location.state.email);
+          setPhone(location.state.phone);
+          setCode(location.state.code);
+          setRUT(location.state.rut);
+        }
+      }
+    }
+    return () => { }
+  }, [])
 
    useEffect(() => {
     const selectedTokens = getRandom(questions[currentQueryIndex].alternatives,6);
@@ -75,40 +80,35 @@ const Trivia = ({ location }) => {
     } else if (questionTime > 1000) {
       const startTime = Date.now();
       const interval = setInterval(() => {
-        if (questionTime < 1000 || ansClicked !== null) {
-          clearInterval(interval);
-        } else if (questionTime < 1000) {
-          answerClicked(0);
+        if (questionTime < 1000 ) {
           clearInterval(interval);
         } else {
           const elapsedTime = Date.now() - startTime;
           setQuestionTime(questionTime - elapsedTime);
         }
-        // console.log("Questiondi Time", questionTime);
       }, timePartition);
       return () => {
         clearInterval(interval);
       }
     }
-  }, [startCount, questionTime, ansClicked]);
+  }, [startCount, questionTime]);
 
   const mins = Math.trunc(questionTime / (1000 * 60));
   const secondModule = Math.floor((questionTime - (mins * 1000 * 60)) / 1000);
   const seconds = secondModule < 10 ? `0${secondModule}` : `${secondModule}`;
 
-  const persistScore = (score, correctAnswers) => {
+  const persistScore = (score) => {
     setLoading(true);
     const url = 'https://eepz8tfl3a.execute-api.us-east-1.amazonaws.com/adidas-persists-participation';
     const data = {
-      code,
+      code: invoiceNumber,
       score,
-      correctAnswers,
-      setNumber: currentQueryIndex + 1 / 5,
-      firstname,
-      lastname,
+      fullName,
       email,
       phone,
-      rut: RUT
+      rut: RUT,
+      store,
+      invoiceAmount
     };
 
     fetch(url, {
@@ -135,34 +135,51 @@ const Trivia = ({ location }) => {
       });
   };
 
-  const alternativeClicked = (index) => {
-    console.log("Indiece de alternativa", index);
-    setAltClicked(index);
+  const alternativeClicked = (index) => { 
+    console.log("Resultado",results);
+    const currentOptionText = currentQueryObject.alternatives[index].text;
+    if(altClicked.length === 0) {
+      console.log("Marcar alternativa", currentOptionText);
+      setAltClicked([index]);
+    } else if(altClicked.length === 1 && !results.includes(index) && !results.includes(altClicked[0])) {
+      if(currentQueryObject.alternatives[altClicked[0]].text === currentOptionText && altClicked[0] !== index){
+        const newResults = [...results, altClicked[0], index];
+        if(newResults.length == 12){
+          // Persist score
+          persistScore(questionTime);
+        }
+        setResults(newResults);
+        setAltClicked([]);
+      } else {
+        setAltClicked([...altClicked, index]);
+        setTimeout(() => {
+          setAltClicked([]);
+        }, 1000);
+      }
+    }
   }
 
-  const answerClicked = (forceTime) => {
-    const newResults = [...results,
-    {
-      ansStatus: forceTime !== undefined ? forceTime : currentQueryObject.alternatives[altClicked].isTrue,
-      time: questionTime
-    }
-    ];
-    setAnsClicked(altClicked);
-    setResults(newResults);
-    setTimeout(() => {
-      setQuestionTime(questionStartTime);
-      if (newResults.length === 5) {
-        const score = newResults.reduce((acum, value) => value.ansStatus ? acum + value.time : acum, 0);
-        const correctAnswers = newResults.reduce((acum, value) => value.ansStatus ? acum + 1 : acum, 0);
-        persistScore(score, correctAnswers);
-        console.log(results);
-      } else {
-        setAltClicked(null);
-        setAnsClicked(null);
-        setCurrentQueryIndex(currentQueryIndex + 1);
-      }
-    }, 2000);
-  }
+  // const answerClicked = (forceTime) => {
+  //   const newResults = [...results,
+  //   {
+  //     ansStatus: forceTime !== undefined ? forceTime : currentQueryObject.alternatives[altClicked].isTrue,
+  //     time: questionTime
+  //   }
+  //   ];
+  //   setResults(newResults);
+  //   setTimeout(() => {
+  //     setQuestionTime(questionStartTime);
+  //     if (newResults.length === 5) {
+  //       const score = newResults.reduce((acum, value) => value.ansStatus ? acum + value.time : acum, 0);
+  //       const correctAnswers = newResults.reduce((acum, value) => value.ansStatus ? acum + 1 : acum, 0);
+  //       persistScore(score, correctAnswers);
+  //       console.log(results);
+  //     } else {
+  //       setAltClicked(null);
+  //       setCurrentQueryIndex(currentQueryIndex + 1);
+  //     }
+  //   }, 2000); 
+  // }
 
   // if (!location.state || !location.state.code || !location.state.time) {
   //   if (typeof window !== `undefined`) {
@@ -219,19 +236,15 @@ const Trivia = ({ location }) => {
               {
                 currentQueryObject.alternatives.map((value, index) => {
                   return <div
-                    className={`option-square wrapper ${altClicked === index ? ' open' : ''}`}
+                    className={`option-square wrapper ${altClicked.includes(index) || results.includes(index) ? ' open' : ''}`}
                     key={`alt-${index}`}
                     onClick={() => { alternativeClicked(index); }}
                   >
                     <div
                       className="alternative alt1 bg"
                       style={{
-                        ...altClicked === index ?
-                          { color: 'white', backgroundColor: '#272626' } :
-                          {},
-                        ...ansClicked !== null && ansClicked == index ? {
-                          backgroundColor: value.isTrue ? '#26A454' : '#D7685B'
-                        } : {}
+                       color: 'white', 
+                       backgroundColor: '#272626'
                       }}
                     >
                       {value.text}
@@ -242,25 +255,6 @@ const Trivia = ({ location }) => {
                 })
               }
             </div>
-            {/* <div
-            style={{
-              height: '40px',
-              width: '130px',
-              lineHeight: '40px',
-              margin: '10px auto 10px auto',
-              backgroundColor: '#D2D2D2',
-              color: 'white',
-              ...altClicked !== null ? {
-                boxShadow: '0px 3px 6px #D7685B',
-                backgroundColor: '#D7685B'
-              } : {},
-            }}
-            onClick={() => {
-              answerClicked();
-            }}
-          >
-          RESPONDER
-          </div> */}
           </div>
           : null
       }
@@ -278,29 +272,6 @@ const Trivia = ({ location }) => {
             </div>
           </div> : null
       }
-
-      {/* // Bottom bar
-    <div
-      className="bottom-bar"
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        height: '10px',
-        lineHeight: '10px',
-        width: '100%',
-        backgroundColor: 'grey'
-      }}
-    >
-      {
-        results.map((value, index) =>
-          <div key={`result-${index}`} style={{ ...bottomStepStyle, backgroundColor: value.ansStatus ? '#26A454' : '#D7685B' }}></div>
-        )
-      }
-      <div style={{ ...bottomStepStyle }}></div>
-    </div>
-      <div style={{ opacity: 0, top: 0, left: 0, position: 'fixed', height: '100%', width: '100%', backgroundColor: 'black', display: ansClicked !== null ? 'block' : 'none' }} />
-     */}
     </div>
   </Layout >);
 }
