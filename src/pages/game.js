@@ -7,11 +7,8 @@ import { getRandom, shuffleArray } from '../components/utils';
 import { navigate } from 'gatsby';
 
 import questions from '../assets/questions.json';
-import Logo from '../assets/svg/AdidasLogo.svg';
 
-
-
-const Trivia = ({ location }) => {
+const Game = ({ location }) => {
 
   const questionStartTime = 90000;
   const timePartition = 5;
@@ -36,25 +33,25 @@ const Trivia = ({ location }) => {
   const [code, setCode] = useState('');
   const [RUT, setRUT] = useState('');
 
-  useEffect(() => {
-    if(true){
-      if (location.state && location.state.time) {
-        if ((Date.now() - location.state.time) > 1000 * 10) {
-          navigate('/');
-        } else {
-          setInvoiceAmount(location.state.invoiceAmount);
-          setInvoiceNumber(location.state.invoiceNumber);
-          setFullName(location.state.fullName);
-          setStore(location.state.store);
-          setEmail(location.state.email);
-          setPhone(location.state.phone);
-          setCode(location.state.code);
-          setRUT(location.state.rut);
-        }
-      }
-    }
-    return () => { }
-  }, [])
+  // useEffect(() => {
+  //   if(true){
+  //     if (location.state && location.state.time) {
+  //       if ((Date.now() - location.state.time) > 1000 * 10) {
+  //         navigate('/');
+  //       } else {
+  //         setInvoiceAmount(location.state.invoiceAmount);
+  //         setInvoiceNumber(location.state.invoiceNumber);
+  //         setFullName(location.state.fullName);
+  //         setStore(location.state.store);
+  //         setEmail(location.state.email);
+  //         setPhone(location.state.phone);
+  //         setCode(location.state.code);
+  //         setRUT(location.state.rut);
+  //       }
+  //     }
+  //   }
+  //   return () => { }
+  // }, [])
 
    useEffect(() => {
     const selectedTokens = getRandom(questions[currentQueryIndex].alternatives,6);
@@ -239,14 +236,12 @@ const Trivia = ({ location }) => {
                     onClick={() => { alternativeClicked(index); }}
                   >
                     <div
-                      className="alternative alt1 bg"
+                      className={`alternative alt1 bg ${value.class}`}
                       style={{
                        color: 'white', 
                        backgroundColor: '#272626'
                       }}
-                    >
-                      {value.text}
-                    </div>
+                   />
                     <div className="door"></div>
                   </div>
                     ;
@@ -275,4 +270,4 @@ const Trivia = ({ location }) => {
 }
 
 
-export default Trivia;
+export default Game;

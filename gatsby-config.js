@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: 'Adidas trivia mujer',
-    description: 'Trivia concurso por el día de la mujer',
+    title: 'Casilleros Adidas',
+    description: 'Memorice Casilleros Adidas',
     author: '@diversivocl',
     menuLinks: [
       {
-        name: 'Trivia',
-        link: '/trivia ',
+        name: 'Game',
+        link: '/game ',
       }
     ],
   },
@@ -45,19 +45,18 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-s3',
       options: {
-        bucketName: 'adidas-triviamujer',
+        bucketName: 'adidas-memo',
       },
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          "G-Y1GY6JHD62", // Google Analytics / GA
-
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     // You can add multiple tracking ids and a pageview event will be fired for all of them.
+    //     trackingIds: [
+    //       "G-Y1GY6JHD62", // Google Analytics / GA
+    //     ],
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-tawk`,
     //   options: {

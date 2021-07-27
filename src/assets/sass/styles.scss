@@ -189,3 +189,58 @@
 .error-span {
     color: red∏;
 }
+
+.futbol{
+    background-image: url('../images/iconos/futbol.png');
+}
+.tenis{
+    background-image: url('../images/iconos/tenis.png');
+}
+.basket{
+    background-image: url('../images/iconos/basket.png');
+}
+.adidas-flor{
+    background-image: url('../images/iconos/adidas-flor.png');
+}
+.adidas-triangulo{
+    background-image: url('../images/iconos/adidas-triangulo.png');
+}
+.mochila{
+    background-image: url('../images/iconos/mochila.png');
+}
+.pantalon{
+    background-image: url('../images/iconos/pantalon.png');
+}
+.zapatilla{
+    background-image: url('../images/iconos/zapatilla.png');
+}
+.gorro{
+    background-image: url('../images/iconos/gorro.png');
+}
+.polera{
+    background-image: url('../images/iconos/polera.png');
+}
+.adidas-kids{
+    background-image: url('../images/iconos/adidas-kids.png');
+}
+.calcetin{
+    background-image: url('../images/iconos/calcetin.png');
+}
+
+.futbol,
+.tenis,
+.basket,
+.adidas-flor,
+.adidas-triangulo,
+.mochila,
+.pantalon,
+.zapatilla,
+.gorro,
+.polera,
+.adidas-kids,
+.calcetin {
+    border: 0;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}

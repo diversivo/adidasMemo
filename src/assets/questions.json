@@ -3,51 +3,62 @@
     "alternatives": [
       {
         "text":"Futbol",
-        "imgUrl": "../../assets/svg/futbol.svg",
+        "class":"futbol",
         "isTrue": true
       },
       {
         "text":"Tenis",
+        "class":"tenis",
         "isTrue": false
       },
       {
         "text":"Basket",
+        "class":"basket",
         "isTrue": false
       },
       {
         "text":"Adidas Flor",
+        "class":"adidas-flor",
         "isTrue": false
       },
       {
         "text":"Adidas Triangulo",
+        "class":"adidas-triangulo",
         "isTrue": false
       },
       {
         "text":"Mochila",
+        "class":"mochila",
         "isTrue": false
       },
       {
         "text":"Pantalon",
+        "class":"pantalon",
         "isTrue": true
       },
       {
         "text":"Zapatilla",
+        "class":"zapatilla",
         "isTrue": false
       },
       {
         "text":"Gorro",
+        "class":"gorro",
         "isTrue": false
       },
       {
         "text":"Polera",
+        "class":"polera",
         "isTrue": false
       },
       {
         "text":"Adidas kids",
+        "class":"adidas-kids",
         "isTrue": false
       },
       {
         "text":"Calcetin",
+        "class":"calcetin",
         "isTrue": false
       }
     ] 

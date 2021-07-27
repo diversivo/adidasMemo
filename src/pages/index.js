@@ -118,7 +118,7 @@ const IndexPage = ({ location }) => {
           console.log('Success:', result);
           console.log(`/info?code=${code}&time=${Date.now()}`);
           if (typeof window !== `undefined` && result.status !== 500) {
-            navigate('/trivia', {
+            navigate('/game', {
               state: {
                 time: Date.now(),
                 invoiceNumber,
@@ -147,6 +147,8 @@ const IndexPage = ({ location }) => {
   };
 
   const stores = [
+    "Internet",
+    "Whatsapp",
     "Mall Sport",
     "Kids Parque Arauco",
     "Kids Arauco Maipu",
