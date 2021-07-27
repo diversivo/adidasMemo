@@ -45,7 +45,10 @@ const Rank = ({ location }) => {
       <img style={{ width: '90%', margin: '0 auto', maxWidth: '200px', paddingTop: '8px'}}src={bannerKids} alt="Banner Kids" />
       <div style={{ color: '#C7066F', fontSize: '36px' }}>GRACIAS POR JUGAR</div>
       <div style={{ fontSize: '14px' }}>Ya estas participando por cualquiera de los siguientes premios:</div>
-      <div style={{ color: '#005EA1', fontSize: '14px' }}>$200.000, $120.000 y $80.000 en productos adidas.</div>
+      <div style={{ color: '#005EA1', fontSize: '14px' }}>
+        1er premio:  2 outfit completo ($250.000 cada uno) <br />
+        2do premio: 1 outfit completo ($250.000 máximo).<br />
+        3er premio:  2 pares d zapatillas a elección ($100.000 máximo c/u).</div>
     </div>
     <div className="rank">
       {
