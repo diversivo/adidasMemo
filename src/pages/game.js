@@ -33,25 +33,26 @@ const Game = ({ location }) => {
   const [code, setCode] = useState('');
   const [RUT, setRUT] = useState('');
 
-  // useEffect(() => {
-  //   if(true){
-  //     if (location.state && location.state.time) {
-  //       if ((Date.now() - location.state.time) > 1000 * 10) {
-  //         navigate('/');
-  //       } else {
-  //         setInvoiceAmount(location.state.invoiceAmount);
-  //         setInvoiceNumber(location.state.invoiceNumber);
-  //         setFullName(location.state.fullName);
-  //         setStore(location.state.store);
-  //         setEmail(location.state.email);
-  //         setPhone(location.state.phone);
-  //         setCode(location.state.code);
-  //         setRUT(location.state.rut);
-  //       }
-  //     }
-  //   }
-  //   return () => { }
-  // }, [])
+  useEffect(() => {
+    if(true){
+      if (location.state && location.state.time) {
+        if ((Date.now() - location.state.time) > 1000 * 10) {
+          console.log("Time Issue");
+          navigate('/');
+        } else {
+          setInvoiceAmount(location.state.invoiceAmount);
+          setInvoiceNumber(location.state.invoiceNumber);
+          setFullName(location.state.fullName);
+          setStore(location.state.store);
+          setEmail(location.state.email);
+          setPhone(location.state.phone);
+          setCode(location.state.code);
+          setRUT(location.state.rut);
+        }
+      }
+    }
+    return () => { }
+  }, [])
 
    useEffect(() => {
     const selectedTokens = getRandom(questions[currentQueryIndex].alternatives,6);
@@ -178,12 +179,12 @@ const Game = ({ location }) => {
   //   }, 2000); 
   // }
 
-  // if (!location.state || !location.state.code || !location.state.time) {
-  //   if (typeof window !== `undefined`) {
-  //     navigate('/');
-  //   }
-  //   return null;
-  // }
+  if (!location.state || !location.state.time) {
+    if (typeof window !== `undefined`) {
+      navigate('/');
+    }
+    return null;
+  }
 
 
   return (<Layout>

@@ -72,6 +72,7 @@ const IndexPage = ({ location }) => {
     }
 
     setErrors(newErrors);
+    return newErrors;
   }
 
 
@@ -99,8 +100,7 @@ const IndexPage = ({ location }) => {
   }, [])
 
   const submitCodeToAPI = (code) => {
-    formValidation();
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(formValidation()).length === 0) {
       setLoading(true);
       const url = 'https://eepz8tfl3a.execute-api.us-east-1.amazonaws.com/adidas-check-code';
       const data = { code: invoiceNumber };

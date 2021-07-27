@@ -83,10 +83,20 @@ function rutEsValido(rut) {
   if (rutLimpio.length < 3) return false;
 
   const split = rutLimpio.split("-");
-  if (split.length !== 2) return false;
+  if (split.length > 2 || split.length < 1) return false;
 
-  const num = parseInt(split[0], 10);
-  const dgv = split[1];
+  let num;
+  let dgv;
+
+  if(split.length === 2) {
+    num = parseInt(split[0], 10);
+    dgv = split[1];
+  } else {
+    dgv = split[0].slice(-1)[0];
+    num = split[0].slice(0, -1); 
+  }
+
+  
 
   const dvCalc = calculateDV(num);
   return dvCalc === dgv;
