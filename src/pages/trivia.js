@@ -191,14 +191,13 @@ const Trivia = ({ location }) => {
 
   return (<Layout>
     <SEO title="Tivia" />
-    <div style={{
+    {/* <div style={{
       width: '100%',
       textAlign: 'center',
       padding: '10px',
     }}>
-      <Logo className="max-w-56 h-56" />
-    </div>
-    <div style={{ backgroundColor: '#a7a7a7', height: '88vh' }}>
+    </div> */}
+    <div className="casilleros--container concret__bg">
       <div style={{ color: 'white', textAlign: 'center', backgroundColor: 'black', fontWeight: 'ligth' }}>
         <span>Descubre los pares y podrás<br />ganar increibles premios</span>
       </div>
@@ -210,7 +209,6 @@ const Trivia = ({ location }) => {
             style={{
               textAlign: 'center',
               width: '100%',
-              backgroundColor: '#a7a7a7'
             }}
           >
 

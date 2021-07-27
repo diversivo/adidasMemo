@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import { clrIlTxt } from '../components/utils';
 import Logo from '../assets/svg/AdidasLogo.svg';
 import bgImage from '../assets/images/bg-contact.jpg';
+import bannerKids from '../assets/images/banner-kids.png';
 
 
 const Rank = ({ location }) => {
@@ -33,10 +34,7 @@ const Rank = ({ location }) => {
 
   return (<Layout>
     <SEO title="Tivia" />
-    <div className="container">
-      <div className="txt-center mt-2">
-        <Logo className="max-w-56 h-56" />
-      </div>
+    <div className="container concret__bg">
     <div
       className="head-text"
       style={{
@@ -44,7 +42,8 @@ const Rank = ({ location }) => {
         textAlign: 'center'
       }}
     >
-      <div style={{ color: '#005EA1', fontSize: '36px' }}>GRACIAS POR JUGAR</div>
+      <img style={{ width: '90%', margin: '0 auto', maxWidth: '200px', paddingTop: '8px'}}src={bannerKids} alt="Banner Kids" />
+      <div style={{ color: '#C7066F', fontSize: '36px' }}>GRACIAS POR JUGAR</div>
       <div style={{ fontSize: '14px' }}>Ya estas participando por cualquiera de los siguientes premios:</div>
       <div style={{ color: '#005EA1', fontSize: '14px' }}>$200.000, $120.000 y $80.000 en productos adidas.</div>
     </div>
