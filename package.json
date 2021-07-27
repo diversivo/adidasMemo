@@ -47,7 +47,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "deploy": "gatsby-plugin-s3 deploy -y && aws cloudfront create-invalidation --distribution-id E2QILRB8AOYY93 --paths '/*'",
+    "deploy": "gatsby-plugin-s3 deploy -y && aws cloudfront create-invalidation --distribution-id EXUDLZJGVSIL1 --paths '/*'",
     "clearcdn": "aws cloudfront create-invalidation --distribution-id E3BVYEJCP2KM57 --paths '/power-meeting/*'",
     "start": "npm run develop",
     "serve": "gatsby serve",

@@ -207,7 +207,7 @@ const IndexPage = ({ location }) => {
   return <Layout>
     <SEO title="Inicio" />
     <div className="container index__container">
-      <h3 style={{ textTransform: 'uppercase', color: 'white', backgroundColor: 'black', width: '100%', height: '30px', lineHeight: '30px' }}>Participa por premios jugando en los</h3>
+      <h3 style={{ textTransform: 'uppercase', color: 'white', backgroundColor: 'black', width: '100%', height: '30px', lineHeight: '30px' }}>Participa por premios jugando en</h3>
       <CasilleroAdidas style={{ width: '70%', margin:'0 auto', paddingTop: '8px'}}/>
       {true ?
         // JDP Put your code HERE
@@ -220,7 +220,7 @@ const IndexPage = ({ location }) => {
           {errors && errors.email ? <span className="error-span">{errors.email}</span> : null}
           <input placeholder="TELEFONO" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.phone ? 'red' : 'black' }} onChange={(e) => { setPhone(e.target.value) }} />
           {errors && errors.phone ? <span className="error-span">{errors.phone}</span> : null}
-          <input placeholder="RUT" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.rut ? 'red' : 'black' }} onChange={(e) => { setRut(e.target.value) }} />
+          <input placeholder="INGRESA TU RUT SIN PUNTO Y CON GUIÓN" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.rut ? 'red' : 'black' }} onChange={(e) => { setRut(e.target.value) }} />
           {errors && errors.rut ? <span className="error-span">{errors.rut}</span> : null}
           <input placeholder="NÚMERO DE BOLETA DE COMPRA" type="text" maxLength="25" style={{ ...inputStyle, borderColor: errors && errors.invoiceNumber ? 'red' : 'black' }} onChange={(e) => { setInvoiceNumber(e.target.value) }} />
           {errors && errors.invoiceNumber ? <span className="error-span">{errors.invoiceNumber}</span> : null}
