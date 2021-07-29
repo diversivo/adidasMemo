@@ -4,7 +4,7 @@
 
 .btn{
   padding: 8px 24px;
-  margin: 8px 24px;
+  margin: 8px 8px;
   border: none;
   border-radius: var(--border-radius);
   font-size: 19px;
@@ -14,4 +14,9 @@
   --clr-bg-button: black;
   background-color: var(--clr-bg-button);
   color: var(--clr-white);
+}
+
+.btn__outline{
+  color: black;
+  border: 1px solid black;
 }

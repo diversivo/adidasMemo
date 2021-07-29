@@ -8,7 +8,7 @@ body{
     position: relative;
     width: 100%;
     margin: 0 auto;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 60px);
     max-width: $max-width;
 }
 
@@ -36,4 +36,10 @@ body{
     grid-template-rows: 1fr;
     gap: 8px;
     width: 100%;
+}
+
+.align-center{
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 16px;
 }

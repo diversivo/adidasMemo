@@ -44,8 +44,11 @@ const Rank = ({ location }) => {
         textAlign: 'center'
       }}
     >
+      <div className="grid-2-col align-center">
       <img style={{ width: '90%', margin: '0 auto', maxWidth: '200px', paddingTop: '8px'}}src={bannerKids} alt="Banner Kids" />
-      <div style={{ color: '#C7066F', fontSize: '36px' }}>GRACIAS POR JUGAR</div>
+      <div style={{ color: '#C7066F', fontSize: '36px', textAlign: 'left' }}>GRACIAS <br />POR JUGAR</div>
+      </div>
+      
       <div style={{ fontSize: '14px' }}>Ya estas participando por cualquiera de los siguientes premios:</div>
       <div style={{ color: '#005EA1', fontSize: '14px' }}>
         1er premio: 2 outfit completo ($250.000 cada uno) <br />
@@ -79,9 +82,13 @@ const Rank = ({ location }) => {
             <div style={clrIlTxt('blk', 70)}>Tiempo</div>
             <div style={clrIlTxt('blu', 30, true)}>{millisToMinutesAndSeconds(90000 - playerScore)}</div>
           </div>
-          <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', marginTop:'10px'}}>
-          <Link className="btn btn--primary" to="/">Volver a jugar</Link>
-          <a className="btn btn--primary" href="https://adidas.cl">Ir a adidas</a>
+          <div style={{display:'flex', justifyContent:'space-around', flexDirection: 'column', alignItems:'center', backgroundColor: 'white'}}>
+            <p>Si tienes otra boleta puedes</p>
+            <div style={{display:'flex', justifyContent:'space-around', flexDirection: 'row', alignItems:'center', backgroundColor: 'white'}}>
+
+              <Link className="btn btn--primary" to="/">Volver a jugar</Link>
+              <a className="btn btn__outline" href="https://adidas.cl">Ir a adidas</a>
+          </div>
           </div>
           {/* <div style={{ ...clrIlTxt('blk', 50), backgroundColor: '#F8F8F8', padding: '0 10px' }}>
             <div style={clrIlTxt('blk', 70)}>Preguntas buenas</div>
