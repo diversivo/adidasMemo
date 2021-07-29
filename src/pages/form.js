@@ -52,7 +52,7 @@ const IndexPage = ({ location }) => {
     if (phone === "") {
       newErrors.phone = 'Campo requerido.';
     }
-    if (!rutEsValido(rut)) {
+    if (!rutEsValido(rut.toLocaleLowerCase())) {
       newErrors.rut = 'Rut inválido.';
     }
     if (rut === "") {
