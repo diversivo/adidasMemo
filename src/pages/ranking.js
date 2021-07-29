@@ -1,5 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
+import {Link} from 'gatsby';
+
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
@@ -46,9 +48,9 @@ const Rank = ({ location }) => {
       <div style={{ color: '#C7066F', fontSize: '36px' }}>GRACIAS POR JUGAR</div>
       <div style={{ fontSize: '14px' }}>Ya estas participando por cualquiera de los siguientes premios:</div>
       <div style={{ color: '#005EA1', fontSize: '14px' }}>
-        1er premio:  2 outfit completo ($250.000 cada uno) <br />
+        1er premio: 2 outfit completo ($250.000 cada uno) <br />
         2do premio: 1 outfit completo ($250.000 máximo).<br />
-        3er premio:  2 pares d zapatillas a elección ($100.000 máximo c/u).</div>
+        3er premio: 2 pares de zapatillas a elección ($100.000 cada uno).</div>
     </div>
     <div className="rank">
       {
@@ -75,7 +77,11 @@ const Rank = ({ location }) => {
           </div>
           <div style={{ ...clrIlTxt('blk', 100), backgroundColor: '#F8F8F8', padding: '0 10px' }}>
             <div style={clrIlTxt('blk', 70)}>Tiempo</div>
-            <div style={clrIlTxt('blu', 30, true)}>{millisToMinutesAndSeconds(playerScore)}</div>
+            <div style={clrIlTxt('blu', 30, true)}>{millisToMinutesAndSeconds(90000 - playerScore)}</div>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', marginTop:'10px'}}>
+          <Link className="btn btn--primary" to="/">Volver a jugar</Link>
+          <a className="btn btn--primary" href="https://adidas.cl">Ir a adidas</a>
           </div>
           {/* <div style={{ ...clrIlTxt('blk', 50), backgroundColor: '#F8F8F8', padding: '0 10px' }}>
             <div style={clrIlTxt('blk', 70)}>Preguntas buenas</div>
