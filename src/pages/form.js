@@ -173,6 +173,7 @@ const IndexPage = ({ location }) => {
     "Outlet La Fábrica  ",
     "Outlet Vivo Maipú",
     "Outlet Vivo Florida ",
+    "Outles Estacíon Central",
     "Outlet Arauco Coquimbo",
     "Outlet Viña del Mar",
     "Outlet Curauma ",
